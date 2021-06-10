@@ -18,7 +18,9 @@ cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 echo $TIMEZONE >  /etc/timezone
 
 if [ -e /args ]; then
+    echo "$(date) - Processing Started."
     /ffmpegwrapper.sh $(cat /args)
+    echo "$(date) - Processing Complete."
 else
     echo "$(date) - Not arguments specified in /args file.  Please mount file containing arguments in '/args'.  Exiting."
     exit 1
