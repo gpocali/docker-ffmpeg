@@ -19,7 +19,7 @@ echo $TIMEZONE >  /etc/timezone
 
 if [ -e /args ]; then
     echo "$(date) - Processing Started."
-    /ffmpegwrapper.sh $(cat /args)
+    ffmpeg $(cat /args)
     echo "$(date) - Processing Complete."
     sleep 900
 else

@@ -1,6 +1,6 @@
-FROM linuxserver/ffmpeg:latest
+FROM alpine:latest
 
-run apt-get install -y tzdata
+run apk add --no-cache tzdata ffmpeg
 
 COPY ./docker-ffmpeg /bin/docker-ffmpeg
 
