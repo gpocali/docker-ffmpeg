@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 # FFMPEG Launcher
 
 # TZ SET - Requires tzdata package
