@@ -1,0 +1,27 @@
+#!/bin/bash
+# FFMPEG Launcher
+
+# TZ SET - Requires tzdata package
+if [[ "$TZ" == "" ]]; then
+    echo timezone not defined using ENV 'TZ', using UTC.
+    TIMEZONE=UTC
+else
+    if [ -e /usr/share/zoneinfo/$TZ ]; then
+        echo Using timezone: $TZ
+        TIMEZONE=$TZ
+    else
+        echo Invalid timezone defined in input.conf file, using UTC.
+        TIMEZONE=UTC
+    fi
+fi
+cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+echo $TIMEZONE >  /etc/timezone
+
+if [ -e /args ]; then
+    /ffmpegwrapper.sh $(cat /args)
+else
+    echo "$(date) - Not arguments specified in /args file.  Please mount file containing arguments in '/args'.  Exiting."
+    exit 1
+fi
+
+exit 0
